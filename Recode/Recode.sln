@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp", "WpfApp\WpfApp.csproj", "{239B2613-80CB-4561-AF1A-014DFD298F9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Util", "Util\Util.csproj", "{1C19A722-41F6-45D8-A87E-5CE0DB1DE765}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{239B2613-80CB-4561-AF1A-014DFD298F9D}.Debug|x64.ActiveCfg = Debug|x64
+		{239B2613-80CB-4561-AF1A-014DFD298F9D}.Debug|x64.Build.0 = Debug|x64
+		{239B2613-80CB-4561-AF1A-014DFD298F9D}.Release|x64.ActiveCfg = Release|x64
+		{239B2613-80CB-4561-AF1A-014DFD298F9D}.Release|x64.Build.0 = Release|x64
+		{1C19A722-41F6-45D8-A87E-5CE0DB1DE765}.Debug|x64.ActiveCfg = Debug|x64
+		{1C19A722-41F6-45D8-A87E-5CE0DB1DE765}.Debug|x64.Build.0 = Debug|x64
+		{1C19A722-41F6-45D8-A87E-5CE0DB1DE765}.Release|x64.ActiveCfg = Release|x64
+		{1C19A722-41F6-45D8-A87E-5CE0DB1DE765}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0FB40802-54BD-4A9A-B6DB-ABDB00A85616}
+	EndGlobalSection
+EndGlobal
