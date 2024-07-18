@@ -2,11 +2,63 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:conv="clr-namespace:WpfApp.ViewModel.Conv"
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
 
-    </Grid>
+    <Window.Resources>
+
+        <conv:CurrentConverter x:Key="storageConverter" />
+        <conv:DurationConverter x:Key="durationConverter" />
+        <conv:StatusConverter x:Key="statusConverter" />
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="/Res/play.xaml" />
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Grid.Resources>
+        
+        <TabControl >
+            <TabItem Header=" DB ">
+                <Grid Margin="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Row="0" Width="80" HorizontalAlignment="Left" Command="{Binding DatabaseLoadCommand}">load</Button>
+
+                    <DataGrid x:Name="recordlist" Grid.Row="1" ItemsSource="{Binding RecordItems}" HeadersVisibility="Column" IsReadOnly="True" ColumnWidth="*" BorderThickness="1" BorderBrush="Gray" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" GridLinesVisibility="All" SelectionMode="Single" TextBlock.TextAlignment="Center">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                            <DataGridTextColumn Header="Date" Binding="{Binding Start, StringFormat='yyyy-MM-dd HH:mm:ss'}" Width="140" />
+                            <DataGridTextColumn Header="Time" Width="80">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding Converter="{StaticResource durationConverter}">
+                                        <Binding Path="Start" />
+                                        <Binding Path="End" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTemplateColumn Width="68">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Margin="4,0" Padding="4" Height="14" Content="{StaticResource ResPlay}" Command="{Binding Path=DataContext.PlayVideoCommand, ElementName=recordlist}" CommandParameter="{Binding Path=SelectedItem , ElementName=recordlist}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+        
+     </Grid>
 </Window>
