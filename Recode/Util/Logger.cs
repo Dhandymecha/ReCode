@@ -79,6 +79,7 @@ namespace Util
         public void Today(DateTime dateTime)
         {
             if (StartTime.Day != dateTime.Day) {
+                StartTime = dateTime;
 
                 var logDirectory = BaseDirectory + "Logs";
                 // 디렉토리
